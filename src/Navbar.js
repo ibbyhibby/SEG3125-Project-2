@@ -72,52 +72,56 @@ return (
           backgroundColor: 'white',
           padding: '15px'
         }}
+        role="navigation"
       >
-        <div style={{ display: 'flex', alignItems: 'center' }}>
+        <div style={{ display: 'flex', alignItems: 'center' }} role="presentation">
           <Link to="/" style={{ textDecoration: 'none' }}>
-            <img src={logo} alt="Logo" className="logo" />
+            <img src={logo} alt="Logo" className="logo" role="img" />
           </Link>
           {consoles.map((console) => (
         <div 
           className="dropdown" 
           onMouseEnter={() => handleDropdownHover(console)} 
           onMouseLeave={() => handleDropdownLeave(console)}
+          role="menu"
         >
           <button
             className="console-button"
             key={console}
+            role="menuitem"
           >
             {console} {dropdownOpen[console] ? '▲' : '▼'}
           </button>
           {dropdownOpen[console] &&
-            <div className="dropdown-content">
+            <div className="dropdown-content" role="menu">
               <Link to={`/${console}`} style={{ textDecoration: 'none' }}>
-                <button className="dropdown-button">{dropdownLinks[0].name}</button>
+                <button className="dropdown-button" role="menuitem">{dropdownLinks[0].name}</button>
               </Link>
               {dropdownLinks.slice(1).map((link) => (
                 <Link to={link.path} style={{ textDecoration: 'none' }}>
-                  <button className="dropdown-button">{link.name}</button>
+                  <button className="dropdown-button" role="menuitem">{link.name}</button>
                 </Link>
               ))}
             </div>
           }
         </div>
       ))}
-          <Link to="/LearnMore">
-            <button className="nav-button">Learn More</button>
+          <Link to="/LearnMore" role="link">
+            <button className="nav-button" role="button">Learn More</button>
           </Link>
-          <Link to="/Contact">
-            <button className="nav-button">Contact</button>
+          <Link to="/Contact" role="link">
+            <button className="nav-button" role="button">Contact</button>
           </Link>
-          <Link to="/Stats">
-            <button className="nav-button">Console Stats</button>
+          <Link to="/Stats" role="link">
+            <button className="nav-button" role="button">Console Stats</button>
           </Link>
         </div>
-        <div>
+        <div role="presentation">
           <button
             className="lang-select nav-button"
             data-lang="en"
             onClick={() => handleTranslateClick('en')}
+            role="button"
           >
             Eng
           </button>
@@ -125,6 +129,7 @@ return (
             className="lang-select nav-button no-translate"
             data-lang="fr"
             onClick={() => handleTranslateClick('fr')}
+            role="button"
           >
             Fr
           </button>
